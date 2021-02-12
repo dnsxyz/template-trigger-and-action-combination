@@ -88,7 +88,7 @@ mailscript triggers:add \
   --or error
 ```
 
-We take a similar approach to actions, first creating two example webhook actions (one to a nominal discord team channel the other to a discord engineering channel):
+We take a similar approach to actions, first creating two example webhook actions, one to a nominal discord team channel the other to a discord engineering channel (replace <discord-team-channel-url> and <discord-engineering-channel-url> with appropriate webhooks):
 
 ```shell
 mailscript actions:add \
@@ -111,7 +111,7 @@ mailscript actions:combine \
   --action discord-engineering
 ```
 
-Finally we can create a workflow that uses the composed trigger and the combined action:
+Finally we can create a workflow that uses the composed trigger and the combined action (replace <username>):
 
 ```shell
 mailscript workflows:add \
