@@ -79,13 +79,22 @@ mailscript triggers:add \
   --subjectcontains error
 ```
 
-We can use the combine functionality to create a named trigger that combines the alert and error triggers so that we can trigger when an email either contains a subject with the word `alert` or with the word `error`:
+We can use the combine functionality to create a named trigger that combines the alert and error triggers so that we can trigger when an email either contains a subject with the word `alert` or with the word `error`. This is using `or` logic to say if either of the composed triggers matches then the overall trigger matches:
 
 ```shell
 mailscript triggers:add \
   --name alert-or-error \
   --or alert \
   --or error
+```
+
+If `and` logic was required (an email with a subject that contains 'alert' `AND` 'error' e.g. 'alert: error in process'), the trigger composition would be:
+
+```shell
+mailscript triggers:add \
+  --name alert-or-error \
+  --and alert \
+  --and error
 ```
 
 We take a similar approach to actions, first creating two example webhook actions, one to a nominal discord team channel the other to a discord engineering channel (replace <discord-team-channel-url> and <discord-engineering-channel-url> with appropriate webhooks):
